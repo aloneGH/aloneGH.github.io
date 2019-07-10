@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Potatso安装]]></title>
+    <url>%2F2019%2F07%2F10%2FPotatso%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[Potatso 在线安装点击安装]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>Potatso</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java 打开 exe 程序]]></title>
     <url>%2F2017%2F11%2F30%2FJava-%E6%89%93%E5%BC%80-exe-%E7%A8%8B%E5%BA%8F%2F</url>
     <content type="text"><![CDATA[在实现 JavaFX 应用自更新的时候，需要在主应用(main.exe)里打开更新应用(update.exe)，一开始想通过 ProcessBuilder 启动一个子进程实现的，但是这种方式打开的应用没有管理员的权限，更新应用需要管理员权限。经过一番查找之后，在 StackOverflow 上发现了另外一种方式可以打开 exe 应用，并且可以通过 UAC 提升为管理员权限。具体方式就是：用 JNA 调用 Windows 的 API，用系统的接口打开 exe 应用。添加 JNA到 JNA 官网下载对应的 jar 文件加到项目 classpath 即可。原文的代码Shell32X.java:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113import com.sun.jna.Native;import com.sun.jna.Pointer;import com.sun.jna.Structure;import com.sun.jna.WString;import com.sun.jna.platform.win32.Shell32;import com.sun.jna.platform.win32.WinDef.HINSTANCE;import com.sun.jna.platform.win32.WinDef.HWND;import com.sun.jna.platform.win32.WinNT.HANDLE;import com.sun.jna.platform.win32.WinReg.HKEY;import com.sun.jna.win32.W32APIOptions;public interface Shell32X extends Shell32&#123; Shell32X INSTANCE = (Shell32X)Native.loadLibrary("shell32", Shell32X.class, W32APIOptions.UNICODE_OPTIONS); int SW_HIDE = 0; int SW_MAXIMIZE = 3; int SW_MINIMIZE = 6; int SW_RESTORE = 9; int SW_SHOW = 5; int SW_SHOWDEFAULT = 10; int SW_SHOWMAXIMIZED = 3; int SW_SHOWMINIMIZED = 2; int SW_SHOWMINNOACTIVE = 7; int SW_SHOWNA = 8; int SW_SHOWNOACTIVATE = 4; int SW_SHOWNORMAL = 1; /** File not found. */ int SE_ERR_FNF = 2; /** Path not found. */ int SE_ERR_PNF = 3; /** Access denied. */ int SE_ERR_ACCESSDENIED = 5; /** Out of memory. */ int SE_ERR_OOM = 8; /** DLL not found. */ int SE_ERR_DLLNOTFOUND = 32; /** Cannot share an open file. */ int SE_ERR_SHARE = 26; int SEE_MASK_NOCLOSEPROCESS = 0x00000040; int ShellExecute(int i, String lpVerb, String lpFile, String lpParameters, String lpDirectory, int nShow); boolean ShellExecuteEx(SHELLEXECUTEINFO lpExecInfo); public static class SHELLEXECUTEINFO extends Structure &#123; /* DWORD cbSize; ULONG fMask; HWND hwnd; LPCTSTR lpVerb; LPCTSTR lpFile; LPCTSTR lpParameters; LPCTSTR lpDirectory; int nShow; HINSTANCE hInstApp; LPVOID lpIDList; LPCTSTR lpClass; HKEY hkeyClass; DWORD dwHotKey; union &#123; HANDLE hIcon; HANDLE hMonitor; &#125; DUMMYUNIONNAME; HANDLE hProcess; */ public int cbSize = size(); public int fMask; public HWND hwnd; public WString lpVerb; public WString lpFile; public WString lpParameters; public WString lpDirectory; public int nShow; public HINSTANCE hInstApp; public Pointer lpIDList; public WString lpClass; public HKEY hKeyClass; public int dwHotKey; /* * Actually: * union &#123; * HANDLE hIcon; * HANDLE hMonitor; * &#125; DUMMYUNIONNAME; */ public HANDLE hMonitor; public HANDLE hProcess; protected List getFieldOrder() &#123; return Arrays.asList(new String[] &#123; "cbSize", "fMask", "hwnd", "lpVerb", "lpFile", "lpParameters", "lpDirectory", "nShow", "hInstApp", "lpIDList", "lpClass", "hKeyClass", "dwHotKey", "hMonitor", "hProcess", &#125;); &#125; &#125;&#125;Elevator.java:12345678910111213141516171819202122232425262728293031323334package test;import test.Shell32X.SHELLEXECUTEINFO;import com.sun.jna.WString;import com.sun.jna.platform.win32.Kernel32;import com.sun.jna.platform.win32.Kernel32Util;public class Elevator&#123; public static void main(String... args) &#123; executeAsAdministrator("c:\\windows\\system32\\notepad.exe", ""); &#125; public static void executeAsAdministrator(String command, String args) &#123; Shell32X.SHELLEXECUTEINFO execInfo = new Shell32X.SHELLEXECUTEINFO(); execInfo.lpFile = new WString(command); if (args != null) execInfo.lpParameters = new WString(args); execInfo.nShow = Shell32X.SW_SHOWDEFAULT; execInfo.fMask = Shell32X.SEE_MASK_NOCLOSEPROCESS; execInfo.lpVerb = new WString("runas"); boolean result = Shell32X.INSTANCE.ShellExecuteEx(execInfo); if (!result) &#123; int lastError = Kernel32.INSTANCE.GetLastError(); String errorMessage = Kernel32Util.formatMessageFromLastErrorCode(lastError); throw new RuntimeException("Error performing elevation: " + lastError + ": " + errorMessage + " (apperror=" + execInfo.hInstApp + ")"); &#125; &#125;&#125;]]></content>
@@ -21,9 +33,9 @@
         <category>Selenium</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>Selenium</tag>
         <tag>滑动验证码</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -34,9 +46,9 @@
         <category>Selenium</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>Selenium</tag>
         <tag>滑动验证码</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
