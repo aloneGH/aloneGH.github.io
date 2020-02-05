@@ -29,7 +29,7 @@
   <entry>
     <title><![CDATA[好书分享]]></title>
     <url>%2F2019%2F07%2F14%2F%E5%A5%BD%E4%B9%A6%E5%88%86%E4%BA%AB%2F</url>
-    <content type="text"><![CDATA[记录遇到的好书、好教程，不定期更新。本次更新时间: 2019-07-14 11:10:00编程语言PythonPython 入门教程《Intermediate Python》，有中文译本《Python 进阶》。原版链接: Intermediate Python中文译本: Python 进阶版本管理GitGit教程 - 廖雪峰Learn Git Branching网站性能《构建高性能 Web 站点》]]></content>
+    <content type="text"><![CDATA[记录遇到的好书、好教程，不定期更新。本次更新时间: 2019-07-14 11:10:00编程语言PythonPython 入门教程《Intermediate Python》，有中文译本《Python 进阶》。原版链接: Intermediate Python中文译本: Python 进阶版本管理GitGit教程 - 廖雪峰Learn Git Branching网站性能《构建高性能 Web 站点》Explore Flask]]></content>
       <categories>
         <category>读书</category>
       </categories>
@@ -122,7 +122,7 @@
   <entry>
     <title><![CDATA[个人的Vim配置]]></title>
     <url>%2F2016%2F09%2F03%2F%E4%B8%AA%E4%BA%BA%E7%9A%84Vim%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[记录下自己的 Vim 配置文件，避免每次都要去网上搜索资料配置，以后需要的时候直接复制下来即可。配置文件(~/.vimrc)的内容如下:1234567891011121314151617181920syntax onset cursorlineset rulerset shiftwidth=4set softtabstop=4set tabstop=4set nobackupset autochdirfiletype plugin indent onset incsearchset hlsearchset showmatchset magicset smartindentset fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936set termencoding=utf-8set encoding=utf-8set ignorecaseset smartcasehi Comment ctermfg=blue]]></content>
+    <content type="text"><![CDATA[记录下自己的 Vim 配置文件，避免每次都要去网上搜索资料配置，以后需要的时候直接复制下来即可。配置文件(~/.vimrc)的内容如下:123456789101112131415161718192021syntax onset cursorlineset rulerset shiftwidth=4set softtabstop=4set tabstop=4set expandtabset nobackupset autochdirfiletype plugin indent onset incsearchset hlsearchset showmatchset magicset smartindentset fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936set termencoding=utf-8set encoding=utf-8set ignorecaseset smartcasehi Comment ctermfg=blue]]></content>
       <categories>
         <category>Vim</category>
       </categories>
